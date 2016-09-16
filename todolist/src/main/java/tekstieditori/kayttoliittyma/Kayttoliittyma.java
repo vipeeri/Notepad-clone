@@ -1,5 +1,5 @@
 
-package tekstieditori;
+package tekstieditori.kayttoliittyma;
 
 
 public class Kayttoliittyma {
