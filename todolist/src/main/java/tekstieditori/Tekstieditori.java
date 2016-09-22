@@ -5,12 +5,15 @@ import java.awt.*; //GUI
 import java.awt.event.*; //Kuuntelijat
 import java.util.Scanner; //Tiedostosta lukeminen
 import java.io.*; //Tiedostoon kirjoitus
+import toiminnot.Tallennus;
 
 public class Tekstieditori extends JFrame implements ActionListener {
 
     private JTextArea tekstiAlue;
     private int laskuri;
     private JMenuBar menuPalkki;
+    private JMenu tiedostoMenu;
+    private JMenuItem tallennaOsa;
     private JScrollPane scpane;
     private String alkuTxt;
     private JToolBar toolBar;
@@ -25,33 +28,54 @@ public class Tekstieditori extends JFrame implements ActionListener {
 
         laskuri = 0;
         alkuTxt = " ";
+        menuPalkki = new JMenuBar(); //menu-palkki
+        tiedostoMenu = new JMenu("Tiedosto"); //tiedosto menu-palkkiin
+        tallennaOsa = new JMenuItem("Tallenna"); //tallenna optio tiedoston alle
         tekstiAlue = new JTextArea(); //tekstialue
-        
         scpane = new JScrollPane(tekstiAlue); //lisätään tekstialue scrollpaneen
         toolBar = new JToolBar();
 
+        
+        
         tekstiAlue.setLineWrap(true);
         tekstiAlue.setWrapStyleWord(true);
+        
+        //Luodaan editorin menu-palkki
+        setJMenuBar(menuPalkki);
+        
+        //Tiedosto alavalikko menu-palkkiin
+        menuPalkki.add(tiedostoMenu);
+        
+        //Tiedostovalikkoon tallenna
+        tiedostoMenu.add(tallennaOsa);
 
         
-
-
-        //näppäinkomentoja
-
         pane.add(scpane, BorderLayout.CENTER);
         pane.add(toolBar, BorderLayout.SOUTH);
-
-
-       
+        
+        //näppäinkomennot tähän, leikkaa liitä kopio
+        
+        tallennaOsa.addActionListener(this);
 
         setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {
+        JMenuItem choice = (JMenuItem) e.getSource();
+        if (choice == tallennaOsa) {
+            
+            Tallennus tallenna = new Tallennus();
+            tallenna.tallennaNimella();
 
+        }
     }
-
+    
     public static void main(String[] args) {
-        new Tekstieditori();
+        Tekstieditori te = new Tekstieditori();
     }
-}
+
+    }
+
+
+
+

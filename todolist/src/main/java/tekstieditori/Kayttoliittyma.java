@@ -2,7 +2,7 @@ package tekstieditori;
 
 import java.io.IOException;
 
-public class Menu {
+public class Kayttoliittyma {
 
    
 
