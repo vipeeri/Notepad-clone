@@ -1,8 +1,7 @@
-**Aihe:**TODO-lista. Toteutetaan ajanhallintaa helpottava järjestelmä, jonne kirjataan
-erilaisia tehtäviä ylös. 
+**Aihe:**Tekstieditori. Toteutetaan yksinkertainen tekstieditori eli notepad-kopio. 
 
 **Käyttäjät:** Ei rajoituksia.
 
 **Käyttäjien toiminnot:**
-- Tehtävien lisäys, muokkaus ja poisto
+- Tekstin syöttö, muokkaus ja tallennus
 
