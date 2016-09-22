@@ -35,11 +35,8 @@
             <artifactId>pitest-maven</artifactId>
             <version>1.1.8</version>
         </plugin>
-    </plugins>
-</build>
-<build>
-  <plugins>
-  ...
+   
+  
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-checkstyle-plugin</artifactId>

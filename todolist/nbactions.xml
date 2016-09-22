@@ -7,10 +7,9 @@
             <goal>org.pitest:pitest-maven:mutationCoverage</goal>
         </goals>
     </action>
-</actions>
 
-<actions> 
-  ...
+
+
   <action>
     <actionName>CUSTOM-checkstyle</actionName>
     <displayName>Checkstyle</displayName>

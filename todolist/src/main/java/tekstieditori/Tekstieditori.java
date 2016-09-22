@@ -33,11 +33,11 @@ public class Tekstieditori {
     public String getSijainti() {
         return this.sijainti;
     }
-    
+
     public String getNimi() {
         return this.nimi;
     }
-    
+
     public void aloita() throws IOException {
         Scanner lukija = new Scanner(System.in);
 
@@ -117,9 +117,8 @@ public class Tekstieditori {
 
             String kokoteksti;
             while ((kokoteksti = reader.readLine()) != null) {
-                
-            
-               tiedostonSisalto.append(kokoteksti);
+
+                tiedostonSisalto.append(kokoteksti);
 //                tiedostonSisalto.append("\n");
             }
 
@@ -127,7 +126,7 @@ public class Tekstieditori {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         return tiedostonSisalto.toString();
     }
 }

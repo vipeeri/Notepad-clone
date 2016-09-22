@@ -8,7 +8,7 @@ public class Main {
 
         Tekstieditori editori = new Tekstieditori();
 
-       editori.aloita();
+        editori.aloita();
         //System.out.println(editori.lueTiedosto());
         //editori.tyhjennaTiedosto("D:\\", "kissa.txt");
         //editori.poistaTiedosto();
