@@ -7,4 +7,4 @@ Tekstieditorilla, eli notepad-kopiolla voidaan muokkaa yksinkertaista tekstiä.
 
 ![Luokkakaavio](http://yuml.me/a85e0244)
  
-[Checkstyle-raportti] (file:///C:/Users/vipe/Tekstieditori/todolist/target/site/checkstyle.html)
+[Checkstyle-raportti](file:///C:/Users/vipe/Tekstieditori/todolist/target/site/checkstyle.htm)
