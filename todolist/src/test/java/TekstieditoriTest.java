@@ -63,22 +63,21 @@ public class TekstieditoriTest {
         }
         assertEquals(expected, result);
     }
-    
-     @Test
+
+    @Test
     public void kirjoitaTiedostoTesti() throws IOException {
         Tekstieditori teksti = new Tekstieditori();
         teksti.setNimi("lintu.txt");
         teksti.setSijainti("D:\\");
         teksti.kirjoitaTiedosto("kissa");
         String expected = "kissa";
-        
-        
+
         String result = (teksti.lueTiedosto("D:\\", "lintu.txt"));
-            
+
         assertEquals(expected, result);
-        
+
     }
-    
+
 //
 //    @Test
 //    public void getSijainti() {
@@ -87,7 +86,6 @@ public class TekstieditoriTest {
 //        assertEquals(expected, teksti.getSijainti());
 //
 //    }
-
 //    @Test
 //    public void getNimi() {
 //        Tekstieditori teksti = new Tekstieditori();

@@ -10,10 +10,9 @@ public class Kayttoliittyma {
 
     public static void main(String[] args) throws IOException {
 
-        
         tiedostoSijaintiJaNimi();
         kirjoitaTiedostoon();
-    
+
         System.out.println(editori.lueTiedosto("D:\\", "kissa.txt"));
         editori.tyhjennaTiedosto("D:\\", "kissa.txt");
         System.out.println(editori.lueTiedosto(editori.getSijainti(), editori.getNimi()));
@@ -52,6 +51,5 @@ public class Kayttoliittyma {
         editori.kirjoitaTiedosto(teksti);
 
     }
-    
 
 }
