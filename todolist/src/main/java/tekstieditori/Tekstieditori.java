@@ -1,81 +1,123 @@
 package tekstieditori;
 
-import javax.swing.*; //JFrame
-import java.awt.*; //GUI
-import java.awt.event.*; //Kuuntelijat
-import java.util.Scanner; //Tiedostosta lukeminen
-import java.io.*; //Tiedostoon kirjoitus
-import toiminnot.Tallennus;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Scanner;
 
-public class Tekstieditori extends JFrame implements ActionListener {
+public class Tekstieditori {
 
-    private JTextArea tekstiAlue;
-    private int laskuri;
-    private JMenuBar menuPalkki;
-    private JMenu tiedostoMenu;
-    private JMenuItem tallennaOsa;
-    private JScrollPane scpane;
-    private String alkuTxt;
-    private JToolBar toolBar;
+    private String sijainti;
+    private String nimi;
+    private String teksti;
 
-    public Tekstieditori() {
-        super("Tekstieditori - harjoitustyö");
-        setSize(500, 400);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Container pane = getContentPane();
-        pane.setLayout(new BorderLayout());
+    Tekstieditori() {
+        this.sijainti = "";
+        this.nimi = "";
+        this.teksti = "";
 
-        laskuri = 0;
-        alkuTxt = " ";
-        menuPalkki = new JMenuBar(); //menu-palkki
-        tiedostoMenu = new JMenu("Tiedosto"); //tiedosto menu-palkkiin
-        tallennaOsa = new JMenuItem("Tallenna"); //tallenna optio tiedoston alle
-        tekstiAlue = new JTextArea(); //tekstialue
-        scpane = new JScrollPane(tekstiAlue); //lisätään tekstialue scrollpaneen
-        toolBar = new JToolBar();
-
-        
-        
-        tekstiAlue.setLineWrap(true);
-        tekstiAlue.setWrapStyleWord(true);
-        
-        //Luodaan editorin menu-palkki
-        setJMenuBar(menuPalkki);
-        
-        //Tiedosto alavalikko menu-palkkiin
-        menuPalkki.add(tiedostoMenu);
-        
-        //Tiedostovalikkoon tallenna
-        tiedostoMenu.add(tallennaOsa);
-
-        
-        pane.add(scpane, BorderLayout.CENTER);
-        pane.add(toolBar, BorderLayout.SOUTH);
-        
-        //näppäinkomennot tähän, leikkaa liitä kopio
-        
-        tallennaOsa.addActionListener(this);
-
-        setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e) {
-        JMenuItem choice = (JMenuItem) e.getSource();
-        if (choice == tallennaOsa) {
-            
-            Tallennus tallenna = new Tallennus();
-            tallenna.tallennaNimella();
+    public void setSijainti(String sijainti) {
+        this.sijainti = sijainti;
+    }
+
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public String getSijainti() {
+        return this.sijainti;
+    }
+
+    public String getNimi() {
+        return this.nimi;
+    }
+
+    public void kirjoitaTiedosto(String teksti) throws IOException {
+
+        this.teksti = teksti;
+        Path polku = Paths.get(this.sijainti, this.nimi);
+        //Tarkistetaan että hakemisto on olemassa
+        Files.createDirectories(polku.getParent());
+        //Kirjoitetaan tiedostoon temp.txt
+        try (
+                final BufferedWriter kirjoittaja = Files.newBufferedWriter(polku,
+                        StandardCharsets.UTF_8,
+                        StandardOpenOption.CREATE,
+                        StandardOpenOption.APPEND)) {
+            kirjoittaja.write(this.teksti);
+            kirjoittaja.close();
+        } catch (IOException e) {
+            e.printStackTrace();
 
         }
-    }
-    
-    public static void main(String[] args) {
-        Tekstieditori te = new Tekstieditori();
-    }
 
     }
 
+    //Metodilla voidaan tyhjentää olemassaoleva tekstitiedosto
+    public void tyhjennaTiedosto(String sijainti, String nimi) throws FileNotFoundException {
+        Path polku = Paths.get(sijainti, nimi);
+        try (
+                final BufferedWriter kirjoittaja = Files.newBufferedWriter(polku,
+                        StandardCharsets.UTF_8)) {
+            kirjoittaja.write("");
+            kirjoittaja.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(this.nimi + " tyhjennetty.");
+    }
 
+    //Metodilla voidaan poistaa koko tekstitiedosto
+    public void poistaTiedosto() {
+        try {
+            File file = new File(this.sijainti + this.nimi);
 
+            if (file.delete()) {
+                System.out.println(file.getName() + " poistettu.");
+            } else {
+                System.out.println("poisto ei onnistunut.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    //Metodilla luetaan tekstitiedosto
+    public String lueTiedosto(String sijainti, String tiedosto) {
+
+        String filePath = new File(sijainti).getAbsolutePath();
+
+        StringBuilder tiedostonSisalto = new StringBuilder();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath + tiedosto));
+
+            String kokoteksti;
+            while ((kokoteksti = reader.readLine()) != null) {
+
+                tiedostonSisalto.append(kokoteksti);
+//                tiedostonSisalto.append("\n");
+            }
+
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return tiedostonSisalto.toString();
+    }
+
+}
