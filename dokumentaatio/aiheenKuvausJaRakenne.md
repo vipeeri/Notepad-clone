@@ -5,3 +5,5 @@
 **Käyttäjien toiminnot:**
 - Tekstin syöttö, muokkaus ja tallennus
 
+
+![Luokkakaavio](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/luokkakaavio.png)
