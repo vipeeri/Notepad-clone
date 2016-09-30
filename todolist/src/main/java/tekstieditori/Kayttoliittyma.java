@@ -1,22 +1,23 @@
 package tekstieditori;
 
+import gui.Gui;
 import java.io.IOException;
 import java.util.Scanner;
+import tekstieditori.Tekstieditori;
 
 public class Kayttoliittyma {
 
     private static Scanner lukija = new Scanner(System.in);
     private static Tekstieditori editori = new Tekstieditori();
+    private static Gui gui = new Gui();
 
+    /**
+     *
+     * 
+     *
+     */
     public static void main(String[] args) throws IOException {
 
-        tiedostoSijaintiJaNimi();
-        kirjoitaTiedostoon();
-
-        System.out.println(editori.lueTiedosto("D:\\", "kissa.txt"));
-        editori.tyhjennaTiedosto("D:\\", "kissa.txt");
-        System.out.println(editori.lueTiedosto(editori.getSijainti(), editori.getNimi()));
-        editori.poistaTiedosto();
     }
 
     public static void tiedostoSijaintiJaNimi() throws IOException {
@@ -48,7 +49,7 @@ public class Kayttoliittyma {
         System.out.println("Kirjoita tiedostoon: ");
         teksti = lukija.nextLine();
 
-        editori.kirjoitaTiedosto(teksti);
+        editori.kirjoitaTiedosto(gui.getTekstiAlue());
 
     }
 

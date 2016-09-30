@@ -1,5 +1,7 @@
 package tekstieditori;
 
+import gui.Gui;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
@@ -16,14 +18,30 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
+import javax.swing.JMenuBar;
+import javax.swing.JTextArea;
+import toiminnot.Boldaus;
+import toiminnot.Fontti;
+import toiminnot.Tallennus;
+import toiminnot.Teemat;
+
+/**
+ *Tekstieditori-luokasta annetaan käskyt toiminnot-paketissa oleviin luokkiin
+ *
+ *
+ */
 
 public class Tekstieditori {
 
     private String sijainti;
     private String nimi;
     private String teksti;
+    private Tallennus tekstinTallennus = new Tallennus();
+    private Boldaus lihavoi = new Boldaus();
+    private Fontti fontti = new Fontti();
+    private Teemat teema = new Teemat();
 
-    Tekstieditori() {
+    public Tekstieditori() {
         this.sijainti = "";
         this.nimi = "";
         this.teksti = "";
@@ -47,24 +65,29 @@ public class Tekstieditori {
     }
 
     public void kirjoitaTiedosto(String teksti) throws IOException {
-
-        this.teksti = teksti;
-        Path polku = Paths.get(this.sijainti, this.nimi);
+        //this.teksti = teksti;
+        //Path polku = Paths.get(this.sijainti, this.nimi);
         //Tarkistetaan että hakemisto on olemassa
-        Files.createDirectories(polku.getParent());
-        //Kirjoitetaan tiedostoon temp.txt
-        try (
-                final BufferedWriter kirjoittaja = Files.newBufferedWriter(polku,
-                        StandardCharsets.UTF_8,
-                        StandardOpenOption.CREATE,
-                        StandardOpenOption.APPEND)) {
-            kirjoittaja.write(this.teksti);
-            kirjoittaja.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+//        Files.createDirectories(polku.getParent());
+        //Käytetään Tallenus-luokan tallenna-metodia tekstin tallentamiseen
+        tekstinTallennus.tallenna(teksti);
+    }
 
+    public void vaihdaTeema(JMenuBar j, String vari) {
+        j.setBackground(Color.green);
+
+    }
+
+    public void lihavoiTeksti(JTextArea t) {
+        lihavoi.vaihdaFontti(t);
+    }
+
+    public void vaihdaFontti(JTextArea tekstiAlue, String fonttiNimi) {
+        if (fonttiNimi.equals("serif")) {
+            fontti.vaihdaFonttiSerif(tekstiAlue);
+        } else if (fonttiNimi.equals("arial")) {
+            fontti.vaihdaFonttiArial(tekstiAlue);
         }
-
     }
 
     //Metodilla voidaan tyhjentää olemassaoleva tekstitiedosto
