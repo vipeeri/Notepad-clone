@@ -20,6 +20,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
 import javax.swing.JMenuBar;
 import javax.swing.JTextArea;
+import toiminnot.Avaa;
 import toiminnot.Boldaus;
 import toiminnot.Fontti;
 import toiminnot.Tallennus;
@@ -40,6 +41,7 @@ public class Tekstieditori {
     private Boldaus lihavoi = new Boldaus();
     private Fontti fontti = new Fontti();
     private Teemat teema = new Teemat();
+    private Avaa avaa = new Avaa();
 
     public Tekstieditori() {
         this.sijainti = "";
@@ -50,6 +52,7 @@ public class Tekstieditori {
 
     public void setSijainti(String sijainti) {
         this.sijainti = sijainti;
+        
     }
 
     public void setNimi(String nimi) {
@@ -64,13 +67,18 @@ public class Tekstieditori {
         return this.nimi;
     }
 
-    public void kirjoitaTiedosto(String teksti) throws IOException {
-        //this.teksti = teksti;
-        //Path polku = Paths.get(this.sijainti, this.nimi);
-        //Tarkistetaan että hakemisto on olemassa
-//        Files.createDirectories(polku.getParent());
+    public void tallennaTiedosto(String teksti) throws IOException {
         //Käytetään Tallenus-luokan tallenna-metodia tekstin tallentamiseen
-        tekstinTallennus.tallenna(teksti);
+        tekstinTallennus.tallenna(teksti, this.nimi);
+    }
+    
+    public void tallennaNimellaTiedosto(String teksti) throws IOException {
+        tekstinTallennus.tallennaNimella(teksti);
+        
+    }
+    
+    public void avaa(JTextArea t) {
+        avaa.avaaTiedosto(t);
     }
 
     public void vaihdaTeema(JMenuBar j, String vari) {

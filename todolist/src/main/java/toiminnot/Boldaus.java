@@ -3,13 +3,14 @@ package toiminnot;
 import java.awt.Font;
 import javax.swing.JTextArea;
 
-public class Boldaus {
-    
     /**
      * Tällä luokalla voidaan vaihtaa JTextArea lihavoiduksi
      * 
      *
      */
+
+public class Boldaus {
+    
 
     public Boldaus() {
 

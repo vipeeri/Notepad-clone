@@ -69,7 +69,7 @@ public class TekstieditoriTest {
         Tekstieditori teksti = new Tekstieditori();
         teksti.setNimi("lintu.txt");
         teksti.setSijainti("D:\\");
-        teksti.kirjoitaTiedosto("kissa");
+        teksti.tallennaTiedosto("kissa");
         String expected = "kissa";
 
         String result = (teksti.lueTiedosto("D:\\", "lintu.txt"));
@@ -106,13 +106,13 @@ public class TekstieditoriTest {
 //        fail("The test case is a prototype.");
 //    }
 //    /**
-//     * Test of kirjoitaTiedosto method, of class Tekstieditori.
+//     * Test of tallennaTiedosto method, of class Tekstieditori.
 //     */
 //    @Test
 //    public void testKirjoitaTiedosto() throws Exception {
-//        System.out.println("kirjoitaTiedosto");
+//        System.out.println("tallennaTiedosto");
 //        Tekstieditori instance = new Tekstieditori();
-//        instance.kirjoitaTiedosto();
+//        instance.tallennaTiedosto();
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
