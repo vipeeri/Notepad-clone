@@ -38,12 +38,12 @@ public class Tallennus extends JFrame {
         }
     }
 
-    // Tallenna -- path
+    // Tallenna
     public void tallenna(String teksti, String tiedosto) throws IOException {
 
         FileWriter kirjoita = null;
         try {
-            kirjoita = new FileWriter(tiedosto, false);
+            kirjoita = new FileWriter("koira.txt", false);
             kirjoita.write(teksti);
 
         } catch (IOException ex) {
@@ -58,8 +58,7 @@ public class Tallennus extends JFrame {
     private void tallennaVanha() {
 
         if (JOptionPane.showConfirmDialog(this, "Haluatko tallentaa " + " ?", "Tallenna", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-
+            System.out.println("Ei vielä toimintoa");
         }
-
     }
 }

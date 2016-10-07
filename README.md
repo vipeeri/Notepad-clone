@@ -7,3 +7,4 @@ Tekstieditorilla, eli notepad-kopiolla voidaan muokkaa yksinkertaista tekstiä.
  
 [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/vipeeri/Tekstieditori/blob/master/documents/site/checkstyle.html)
 [Pit-raportti](https://htmlpreview.github.io/?https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/pit/index.html)
+

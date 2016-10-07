@@ -67,8 +67,6 @@ public class Gui extends JFrame implements ActionListener {
         Container pane = getContentPane();
         pane.setLayout(new BorderLayout());
 
-        
-
         /**
          *
          * Luodaan menuvalikot
@@ -126,7 +124,7 @@ public class Gui extends JFrame implements ActionListener {
 
         fontti.add(serifFontti);
         fontti.add(arialFontti);
-        
+
         //Muokkaa valikkoon tulossa leikkaa/liitä/kopioi
         kopioi = new JMenuItem(new DefaultEditorKit.CopyAction());
         kopioi.setText("Kopioi");

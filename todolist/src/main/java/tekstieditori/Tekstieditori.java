@@ -27,11 +27,10 @@ import toiminnot.Tallennus;
 import toiminnot.Teemat;
 
 /**
- *Tekstieditori-luokasta annetaan käskyt toiminnot-paketissa oleviin luokkiin
+ * Tekstieditori-luokasta annetaan käskyt toiminnot-paketissa oleviin luokkiin
  *
  *
  */
-
 public class Tekstieditori {
 
     private String sijainti;
@@ -52,7 +51,7 @@ public class Tekstieditori {
 
     public void setSijainti(String sijainti) {
         this.sijainti = sijainti;
-        
+
     }
 
     public void setNimi(String nimi) {
@@ -71,12 +70,12 @@ public class Tekstieditori {
         //Käytetään Tallenus-luokan tallenna-metodia tekstin tallentamiseen
         tekstinTallennus.tallenna(teksti, this.nimi);
     }
-    
+
     public void tallennaNimellaTiedosto(String teksti) throws IOException {
         tekstinTallennus.tallennaNimella(teksti);
-        
+
     }
-    
+
     public void avaa(JTextArea t) {
         avaa.avaaTiedosto(t);
     }

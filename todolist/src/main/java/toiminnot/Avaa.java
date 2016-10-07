@@ -9,12 +9,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 public class Avaa extends JFrame {
+
     /**
      * Tällä luokalla voidaan avata valitsema tekstitiedosto
-     * 
+     *
      *
      */
-
     public Avaa() {
 
     }

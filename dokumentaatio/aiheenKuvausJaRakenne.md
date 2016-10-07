@@ -7,3 +7,6 @@
 
 
 ![Luokkakaavio](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/luokkakaavio.png)
+![SekvenssiKaavio1](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/sekvenssikaavioavaa.png)
+![Sekvenssikaavio2](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/sekvenssikaaviotallenna.png)
+![Sekvenssikaavio3](
