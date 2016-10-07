@@ -66,16 +66,38 @@ public class Tekstieditori {
         return this.nimi;
     }
 
+    /**
+     * Metodi tallentaa JTextAreassa olevan tekstin tiedostoon
+     *
+     * @param teksti Käyttäjän antama syöte
+     *
+     *
+     */
     public void tallennaTiedosto(String teksti) throws IOException {
         //Käytetään Tallenus-luokan tallenna-metodia tekstin tallentamiseen
         tekstinTallennus.tallenna(teksti, this.nimi);
     }
 
+    /**
+     * Metodi tallentaa JTextAreassa olevan tekstin käyttäjän valitsemaan
+     * tiedostoon
+     *
+     * @param teksti Käyttäjän antama syöte
+     *
+     *
+     */
     public void tallennaNimellaTiedosto(String teksti) throws IOException {
         tekstinTallennus.tallennaNimella(teksti);
 
     }
 
+    /**
+     * Metodi avaa JTextAreaan käyttäjän valitseman tiedoston
+     *
+     * @param t editorin JTextArea-komponentti
+     *
+     *
+     */
     public void avaa(JTextArea t) {
         avaa.avaaTiedosto(t);
     }
@@ -85,9 +107,23 @@ public class Tekstieditori {
 
     }
 
+    /**
+     * Metodi lihavoi JTextAreassa olevan tekstin
+     *
+     * @param t editorin JTextArea-komponentti
+     *
+     *
+     */
     public void lihavoiTeksti(JTextArea t) {
         lihavoi.vaihdaFontti(t);
     }
+    /**
+     * Metodi vaihtaa JTextAreassa olevan tekstin fontin
+     *
+     * @param tekstiAlue editorin JTextArea-komponentti
+     * @param fonttiNimi käyttäjän valitsema fontti
+     *
+     */
 
     public void vaihdaFontti(JTextArea tekstiAlue, String fonttiNimi) {
         if (fonttiNimi.equals("serif")) {
