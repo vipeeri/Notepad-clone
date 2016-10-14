@@ -13,7 +13,7 @@ public class Main {
      *
      */
     public static void main(String[] args) throws IOException {
-        new Gui();
+        new Gui().setVisible(true);
 
     }
 

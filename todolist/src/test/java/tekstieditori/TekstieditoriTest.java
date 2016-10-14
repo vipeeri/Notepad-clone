@@ -31,69 +31,11 @@ public class TekstieditoriTest {
     public void tearDown() {
     }
 
-    @Test
-    public void lueTiedostonTesti() {
-
-        String expected = "koira";
-        Tekstieditori teksti = new Tekstieditori();
-        String result = teksti.lueTiedosto("D:\\", "koira.txt");
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void tyhjennaTiedostoTesti() throws FileNotFoundException {
-        Tekstieditori teksti = new Tekstieditori();
-        teksti.tyhjennaTiedosto("D:\\", "kissa.txt");
-
-        String expected = "";
-        String result = teksti.lueTiedosto("D:\\", "kissa.txt");
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void poistaTiedostoTesti() {
-        Tekstieditori teksti = new Tekstieditori();
-        teksti.poistaTiedosto();
-        String expected = "toimii";
-        String result = "ei toimi";
-
-        File f = new File("D:\\kissa.txt");
-        if (f.exists() && !f.isDirectory()) {
-            result = "toimii";
-        }
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void kirjoitaTiedostoTesti() throws IOException {
-        Tekstieditori teksti = new Tekstieditori();
-        teksti.setNimi("lintu.txt");
-        teksti.setSijainti("D:\\");
-        teksti.tallennaTiedosto("kissa");
-        String expected = "kissa";
-
-        String result = (teksti.lueTiedosto("D:\\", "lintu.txt"));
-
-        assertEquals(expected, result);
-
-    }
+    
     
     
 
-//
-//    @Test
-//    public void getSijainti() {
-//        Tekstieditori teksti = new Tekstieditori();
-//        String expected = "D:\\";
-//        assertEquals(expected, teksti.getSijainti());
-//
-//    }
-//    @Test
-//    public void getNimi() {
-//        Tekstieditori teksti = new Tekstieditori();
-//        String expected = "kissa.txt";
-//        assertEquals(expected, teksti.getNimi());
-//    }
+
     /**
      * Test of aloita method, of class Tekstieditori.
      */

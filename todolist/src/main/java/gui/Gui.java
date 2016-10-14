@@ -18,37 +18,32 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.JToolBar;
 import javax.swing.text.DefaultEditorKit;
+import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.StyledDocument;
 import tekstieditori.Tekstieditori;
 import toiminnot.Tallennus;
 import toiminnot.Teemat;
+import toiminnot.Tekstinvalinta;
 
 public class Gui extends JFrame implements ActionListener {
 
+    private JTextPane tekstiPane;
     private JTextArea tekstiAlue;
+    private StyledDocument styledDocument;
     private int laskuri;
     private JMenuBar menuPalkki;
-    private JMenu tiedostoMenu;
-    private JMenu muokkaaMenu;
-    private JMenu muotoileMenu;
-    private JMenuItem tallennaOsa;
-    private JMenuItem tallennaNimella;
-    private JMenuItem avaaOsa;
-    private JMenuItem boldaus;
-    private JMenuItem fontti;
-    private JMenuItem serifFontti;
-    private JMenuItem arialFontti;
-    private JMenu teema;
-    private JMenuItem vihreaTeema;
+    private JMenu tiedostoMenu, muokkaaMenu, muotoileMenu, teema;
+    private JMenuItem tallennaOsa, tallennaNimella, avaaOsa, boldaus, fontti, serifFontti, arialFontti, vihreaTeema, kopioi,
+            liita, leikkaa;
     private JScrollPane scpane;
     private String alkuTxt;
     private JToolBar toolBar;
     private Tekstieditori tEditori = new Tekstieditori();
     private Teemat teemat = new Teemat();
-    private JMenuItem kopioi;
-    private JMenuItem liita;
-    private JMenuItem leikkaa;
+    private Tekstinvalinta tekstinValinta;
 
     public Gui() {
 
@@ -66,8 +61,6 @@ public class Gui extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container pane = getContentPane();
         pane.setLayout(new BorderLayout());
-
-        
 
         /**
          *
@@ -97,14 +90,18 @@ public class Gui extends JFrame implements ActionListener {
         serifFontti = new JMenuItem("Serif");
         arialFontti = new JMenuItem("Arial");
         //tekstialue
-        tekstiAlue = new JTextArea();
-        //lisätään tekstialue scrollpaneen
-        scpane = new JScrollPane(tekstiAlue);
+
+        tekstinValinta = new Tekstinvalinta();
+        this.styledDocument = new DefaultStyledDocument();
+        tekstiPane = new JTextPane(styledDocument);
+        tekstiPane.addCaretListener(tekstinValinta);
+
+        //scpane = new JScrollPane(tekstiAlue);
+        scpane = new JScrollPane(tekstiPane);
         toolBar = new JToolBar();
 
-        tekstiAlue.setLineWrap(true);
-        tekstiAlue.setWrapStyleWord(true);
-
+//        tekstiAlue.setLineWrap(true);
+//        tekstiAlue.setWrapStyleWord(true);
         //Luodaan editorin menu-palkki
         setJMenuBar(menuPalkki);
 
@@ -126,7 +123,7 @@ public class Gui extends JFrame implements ActionListener {
 
         fontti.add(serifFontti);
         fontti.add(arialFontti);
-        
+
         //Muokkaa valikkoon tulossa leikkaa/liitä/kopioi
         kopioi = new JMenuItem(new DefaultEditorKit.CopyAction());
         kopioi.setText("Kopioi");
@@ -153,7 +150,6 @@ public class Gui extends JFrame implements ActionListener {
         serifFontti.addActionListener(this);
         arialFontti.addActionListener(this);
 
-        setVisible(true);
     }
 
     public String getTekstiAlue() {
@@ -171,16 +167,16 @@ public class Gui extends JFrame implements ActionListener {
         }
         if (choice == tallennaNimella) {
             try {
-                tEditori.tallennaNimellaTiedosto(tekstiAlue.getText());
+                tEditori.tallennaNimellaTiedosto(tekstiPane.getText());
             } catch (IOException ex) {
                 Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (choice == avaaOsa) {
-            tEditori.avaa(tekstiAlue);
+            tEditori.avaa(tekstiPane);
         }
         if (choice == boldaus) {
-            tEditori.lihavoiTeksti(tekstiAlue);
+            tEditori.lihavoiTeksti(styledDocument, tekstinValinta.getMark(), tekstinValinta.getDot());
         }
         if (choice == arialFontti) {
             tEditori.vaihdaFontti(tekstiAlue, "arial");

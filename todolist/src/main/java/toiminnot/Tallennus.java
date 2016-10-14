@@ -15,7 +15,9 @@ import javax.swing.JOptionPane;
 /**
  * Tällä luokalla voidaan tallentaa tuotettu teksti haluamaan sijaintiin
  *
- *
+ *@param tallennaNimella tallentaa tiedoston käyttäjän haluamaan hakemistoon
+ * @param tallenna tallentaa tiedoston siihen mistä se on avattu
+ * @param tallennaVanha kysyy käyttäjältä tallennetaanko tiedostoa jos käyttäjä sulkee ohjelman tallentamatta
  */
 public class Tallennus extends JFrame {
 

@@ -14,9 +14,8 @@ import javax.swing.JToolBar;
 /**
  * Jatkossa luokalla pitäisi pystyä vaihtamaan esim. värejä
  *
- *
+ *@paintComponent hoitaa tämän
  */
-
 public class Teemat extends JToolBar {
 
     Color bgColor = Color.WHITE;
