@@ -9,7 +9,6 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
-<<<<<<< HEAD
     /**
      * Tällä luokalla voidaan vaihtaa JTextArea lihavoiduksi
      * 
@@ -17,14 +16,8 @@ import javax.swing.text.StyledDocument;
      *@param lisaaTyyli pitäisi lisätä lihavointi-tyyli, jotta se voidaa ottaa käyttöön
      */
 
-=======
-/**
- * Tällä luokalla voidaan vaihtaa JTextArea lihavoiduksi
- *
- *
- */
->>>>>>> 1f80ff53faeafb6882faca9f096c14e6bac2cb8f
 public class Boldaus {
+    
 
     public Boldaus() {
 

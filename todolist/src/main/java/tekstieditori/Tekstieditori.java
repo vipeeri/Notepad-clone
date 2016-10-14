@@ -68,46 +68,17 @@ public class Tekstieditori {
         return this.nimi;
     }
 
-    /**
-     * Metodi tallentaa JTextAreassa olevan tekstin tiedostoon
-     *
-     * @param teksti Käyttäjän antama syöte
-     *
-     *
-     */
     public void tallennaTiedosto(String teksti) throws IOException {
         //Käytetään Tallenus-luokan tallenna-metodia tekstin tallentamiseen
         tekstinTallennus.tallenna(teksti, this.nimi);
     }
 
-<<<<<<< HEAD
-=======
-    /**
-     * Metodi tallentaa JTextAreassa olevan tekstin käyttäjän valitsemaan
-     * tiedostoon
-     *
-     * @param teksti Käyttäjän antama syöte
-     *
-     *
-     */
->>>>>>> 1f80ff53faeafb6882faca9f096c14e6bac2cb8f
     public void tallennaNimellaTiedosto(String teksti) throws IOException {
         tekstinTallennus.tallennaNimella(teksti);
 
     }
 
-<<<<<<< HEAD
     public void avaa(JTextPane t) {
-=======
-    /**
-     * Metodi avaa JTextAreaan käyttäjän valitseman tiedoston
-     *
-     * @param t editorin JTextArea-komponentti
-     *
-     *
-     */
-    public void avaa(JTextArea t) {
->>>>>>> 1f80ff53faeafb6882faca9f096c14e6bac2cb8f
         avaa.avaaTiedosto(t);
     }
 
@@ -116,28 +87,9 @@ public class Tekstieditori {
 
     }
 
-<<<<<<< HEAD
     public void lihavoiTeksti(StyledDocument t, int mark, int dot) {
         lihavoi.lihavoiTeksti(t, mark, dot);
-=======
-    /**
-     * Metodi lihavoi JTextAreassa olevan tekstin
-     *
-     * @param t editorin JTextArea-komponentti
-     *
-     *
-     */
-    public void lihavoiTeksti(JTextArea t) {
-        lihavoi.vaihdaFontti(t);
->>>>>>> 1f80ff53faeafb6882faca9f096c14e6bac2cb8f
     }
-    /**
-     * Metodi vaihtaa JTextAreassa olevan tekstin fontin
-     *
-     * @param tekstiAlue editorin JTextArea-komponentti
-     * @param fonttiNimi käyttäjän valitsema fontti
-     *
-     */
 
     public void vaihdaFontti(JTextArea tekstiAlue, String fonttiNimi) {
         if (fonttiNimi.equals("serif")) {
