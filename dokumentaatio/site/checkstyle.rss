@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 5,
-             Errors: 0,
+      <title>File: 8,
+             Errors: 1,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,6 +46,20 @@ under the License.
           <tbody>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#toiminnot.Fontti.java">toiminnot/Fontti.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#toiminnot.Tallennus.java">toiminnot/Tallennus.java</a>
                 </td>
                 <td>
@@ -55,26 +69,26 @@ under the License.
                   0
                 </td>
                 <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#toiminnot.Avaa.java">toiminnot/Avaa.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
                   0
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#tekstieditori.Kayttoliittyma.java">tekstieditori/Kayttoliittyma.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#tekstieditori.Gui.java">tekstieditori/Gui.java</a>
+                  <a href="${project.url}/checkstyle.html#tekstieditori.Main.java">tekstieditori/Main.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +116,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#gui.Gui.java">gui/Gui.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#toiminnot.Teemat.java">toiminnot/Teemat.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#toiminnot.Boldaus.java">toiminnot/Boldaus.java</a>
                 </td>
                 <td>
                   0

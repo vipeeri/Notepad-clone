@@ -15,6 +15,10 @@ public class Avaa extends JFrame {
 
     /**
      * Tällä luokalla voidaan avata valitsema tekstitiedosto
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> 1f80ff53faeafb6882faca9f096c14e6bac2cb8f
      *
      *@param avaaTiedosto rakentaa JTextPaneen Stringin tiedostossa olevasta tekstistä
      */

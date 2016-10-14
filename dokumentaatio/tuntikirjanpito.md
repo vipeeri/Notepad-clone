@@ -9,3 +9,4 @@ Päivä | Tunnit | Kuvaus
 23.09.2016 | 5h | Logiikan vääntöä, JUnit-taistelua
 29.09.2016 | 8h | GUI vääntöä
 30.09.2016 | 9h | GUI vääntöä ja toiminnallisuuksia
+07.10.2016 | 6h | Toiminnallisuuden lisäämistä, sekvenssikaavioita
