@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -20,8 +21,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.JToolBar;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultEditorKit;
 import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 import tekstieditori.Tekstieditori;
 import toiminnot.Tallennus;
@@ -45,7 +52,7 @@ public class Gui extends JFrame implements ActionListener {
     private Teemat teemat = new Teemat();
     private Tekstinvalinta tekstinValinta;
 
-    public Gui() {
+    public Gui() throws BadLocationException {
 
         super("Tekstieditori - harjoitustyö");
 
@@ -149,8 +156,10 @@ public class Gui extends JFrame implements ActionListener {
         boldaus.addActionListener(this);
         serifFontti.addActionListener(this);
         arialFontti.addActionListener(this);
-
+        
+        
     }
+    
 
     public String getTekstiAlue() {
         return tekstiAlue.getText();
@@ -176,7 +185,7 @@ public class Gui extends JFrame implements ActionListener {
             tEditori.avaa(tekstiPane);
         }
         if (choice == boldaus) {
-            tEditori.lihavoiTeksti(styledDocument, tekstinValinta.getMark(), tekstinValinta.getDot());
+            tEditori.lihavoiTeksti(tekstiPane);
         }
         if (choice == arialFontti) {
             tEditori.vaihdaFontti(tekstiAlue, "arial");

@@ -87,8 +87,8 @@ public class Tekstieditori {
 
     }
 
-    public void lihavoiTeksti(StyledDocument t, int mark, int dot) {
-        lihavoi.lihavoiTeksti(t, mark, dot);
+    public void lihavoiTeksti(JTextPane t) {
+        lihavoi.lihavoiTeksti(t);
     }
 
     public void vaihdaFontti(JTextArea tekstiAlue, String fonttiNimi) {
