@@ -3,44 +3,41 @@ package toiminnot;
 import javax.swing.*;
 import javax.swing.text.Element;
 import java.awt.*;
+
 /**
- * Tällä luokalla voidaan vaihtaa JTextArean tekstin fonttia
+ * Tämä luokka lisää editoriin rivinumerot
  *
- * @param vaihdaFonttiArial vaihtaa fontin Arialiksi
- * @param vaihdaFonttiSerif vaihtaa fontin Serifiksi
+ * @param paivitaRiviNumerot päivittää numerot tekstikenttään
+ * @param getRiviNumeroTeksti appendaa rivinumeron riippuen millä rivillä ollaan
  *
  */
 
-public class Rivinumerot extends JTextPane
-{
-    private JTextPane textPane;
+public class Rivinumerot extends JTextPane {
 
-    public Rivinumerot(JTextPane textPane)
-    {
-        this.textPane = textPane;
+    private JTextPane tekstiPane;
+
+    public Rivinumerot(JTextPane textPane) {
+        this.tekstiPane = textPane;
         setBackground(Color.LIGHT_GRAY);
         setEditable(false);
     }
 
-    public void paivitaRiviNumerot()
-    {
-        String lineNumbersText = getRiviNumeroTeksti();
-        setText(lineNumbersText);
+    public void paivitaRiviNumerot() {
+        String riviNumeroTeksti = getRiviNumeroTeksti();
+        setText(riviNumeroTeksti);
     }
 
-    private String getRiviNumeroTeksti()
-    {   
+    public String getRiviNumeroTeksti() {
 
-        int caretPosition = textPane.getDocument().getLength();
-        Element root = textPane.getDocument().getDefaultRootElement();
-        StringBuilder lineNumbersTextBuilder = new StringBuilder();
-        lineNumbersTextBuilder.append("1").append(System.lineSeparator());
+        int caretPosition = tekstiPane.getDocument().getLength();
+        Element root = tekstiPane.getDocument().getDefaultRootElement();
+        StringBuilder sb = new StringBuilder();
+        sb.append("1").append(System.lineSeparator());
 
-        for (int elementIndex = 2; elementIndex < root.getElementIndex(caretPosition) + 2; elementIndex++)
-        {
-            lineNumbersTextBuilder.append(elementIndex).append(System.lineSeparator());
+        for (int elementIndex = 2; elementIndex < root.getElementIndex(caretPosition) + 2; elementIndex++) {
+            sb.append(elementIndex).append(System.lineSeparator());
         }
 
-        return lineNumbersTextBuilder.toString();
+        return sb.toString();
     }
 }

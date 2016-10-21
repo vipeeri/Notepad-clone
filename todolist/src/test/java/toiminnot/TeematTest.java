@@ -6,7 +6,7 @@
 package toiminnot;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import javax.swing.JTextPane;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,30 +39,33 @@ public class TeematTest {
     public void tearDown() {
     }
 
+   
+
     /**
-     * Test of setColor method, of class Teemat.
+     * Test of punainenTeema method, of class Teemat.
      */
     @Test
-    public void testSetColor() {
-        System.out.println("setColor");
-        Color color = null;
+    public void testPunainenTeema() {
+        
+        JTextPane tekstiPane = new JTextPane();
         Teemat instance = new Teemat();
-        instance.setColor(color);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.punainenTeema(tekstiPane);
+       
+        assertTrue(tekstiPane.getBackground() == Color.red);
+            
+        
     }
 
     /**
-     * Test of paintComponent method, of class Teemat.
+     * Test of tummaTeema method, of class Teemat.
      */
     @Test
-    public void testPaintComponent() {
-        System.out.println("paintComponent");
-        Graphics g = null;
+    public void testTummaTeema() {
+        JTextPane tekstiPane = new JTextPane();
         Teemat instance = new Teemat();
-        instance.paintComponent(g);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.tummaTeema(tekstiPane);
+       
+        assertTrue(tekstiPane.getBackground() == Color.black);
     }
     
 }

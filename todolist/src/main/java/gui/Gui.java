@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -37,7 +39,7 @@ import toiminnot.Rivinumerot;
 import toiminnot.Tallennus;
 import toiminnot.Teemat;
 
-public class Gui extends JFrame implements ActionListener {
+public class Gui extends JFrame implements ActionListener, WindowListener {
 
     private JTextPane tekstiPane;
     private JTextArea tekstiAlue;
@@ -46,7 +48,7 @@ public class Gui extends JFrame implements ActionListener {
     private JMenuBar menuPalkki;
     private JMenu tiedostoMenu, muokkaaMenu, muotoileMenu, teema;
     private JMenuItem tallennaOsa, tallennaNimella, avaaOsa, boldaus, fontti, serifFontti, arialFontti, tummaTeema, punainenTeema, kopioi,
-            liita, leikkaa;
+            liita, leikkaa, alleViivaa;
     private JScrollPane scpane;
     private String alkuTxt;
     private JToolBar toolBar;
@@ -57,6 +59,7 @@ public class Gui extends JFrame implements ActionListener {
     public Gui() throws BadLocationException {
 
         super("Tekstieditori - harjoitustyö");
+        super.addWindowListener(this);
 
         /**
          * GUI-luokka tarjoaa nimensä mukaan graafisen käyttöliittymän
@@ -67,7 +70,7 @@ public class Gui extends JFrame implements ActionListener {
          */
         setSize(500, 400);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         Container pane = getContentPane();
         pane.setLayout(new BorderLayout());
 
@@ -97,9 +100,10 @@ public class Gui extends JFrame implements ActionListener {
         tallennaOsa = new JMenuItem("Tallenna");
         tallennaNimella = new JMenuItem("Tallenna nimellä...");
 
-        //Lihavointi ja fontit muotoile submenuun
+        //Lihavointi, alleviivaus ja fontit muotoile submenuun
         boldaus = new JMenuItem("Lihavoi");
         fontti = new JMenu("Fontti");
+        alleViivaa = new JMenuItem("Alleviivaa");
 
         //Submenut Fontille:
         serifFontti = new JMenuItem("Serif");
@@ -123,10 +127,11 @@ public class Gui extends JFrame implements ActionListener {
         tiedostoMenu.add(tallennaOsa);
         tiedostoMenu.add(tallennaNimella);
 
-        //Muotoile-valikkoon lihavointi, fontti ja teema
+        //Muotoile-valikkoon lihavointi, fontti, teema ja alleviivaus
         muotoileMenu.add(boldaus);
         muotoileMenu.add(fontti);
         muotoileMenu.add(teema);
+        muotoileMenu.add(alleViivaa);
 
         //Teema-valikkoon punainen ja tumma teema
         teema.add(punainenTeema);
@@ -162,6 +167,7 @@ public class Gui extends JFrame implements ActionListener {
         arialFontti.addActionListener(this);
         tummaTeema.addActionListener(this);
         punainenTeema.addActionListener(this);
+        alleViivaa.addActionListener(this);
 
         rivinumerotTextPane = new Rivinumerot(tekstiPane);
         scpane.setRowHeaderView(rivinumerotTextPane);
@@ -225,10 +231,47 @@ public class Gui extends JFrame implements ActionListener {
         if (choice == tummaTeema) {
             tEditori.tummaTeema(tekstiPane);
         }
+        if (choice == alleViivaa) {
+            tEditori.alleViivaa(tekstiPane);
+            
+        }
     }
 
     public void changeHeader(String teksti) {
         setTitle("Tekstieditori - " + teksti);
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        try {
+            tEditori.tallennaVanha(tekstiPane);
+        } catch (IOException ex) {
+            Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
     }
 
 }

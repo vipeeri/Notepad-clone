@@ -5,6 +5,10 @@
 **Käyttäjien toiminnot:**
 - Tekstin syöttö, muokkaus ja tallennus
 
+**Rakennekuvaus:**
+Tekstieditori koostuu kymmenestä eri luokasta, joista logiikkaan kuuluvat toiminnot-paketissa olevat luokat. Tekstieditori-pakettiin kuuluu Main- ja Tekstieditori-luokka, joista viimeisin jakaa käyttäjän valitsemia toiminnallisuuksia toiminnot-paketissa oleviin luokkiin.
+Käyttäjä voi antaa komentoja GUI-luokasta, johon Tekstieditori-luokka sitoo kaikki käytettävissä olevat toiminnot.
+
 
 ![Luokkakaavio](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/luokkakaavio.png)
 ![SekvenssiKaavio1](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/sekvenssikaavioavaa.png)

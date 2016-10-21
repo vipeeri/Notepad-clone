@@ -17,44 +17,39 @@ import static org.junit.Assert.*;
  *
  * @author vipe
  */
-public class AvaaTest {
-    
-    public AvaaTest() {
+public class RivinumerotTest {
+
+    public RivinumerotTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    
-
     /**
-     * Test of avaaTiedosto method, of class Avaa.
+     * Test of paivitaRiviNumerot method, of class Rivinumerot.
      */
     @Test
-    public void testAvaaTiedosto() {
-        
-//        JTextPane alue = new JTextPane();
-//        Avaa instance = new Avaa();
-//        
-//        instance.avaaTiedosto(alue);
-//        
-//        //Valitaan tyhjä tekstitiedosto, jotta testi toimii
-//        
-//        assertEquals(alue.getText(), "");
-//        
+    public void testPaivitaRiviNumerot() {
+
+        JTextPane jpane = new JTextPane();
+        jpane.setText("jee");
+        Rivinumerot rivinumero = new Rivinumerot(jpane);
+
+        assertTrue(rivinumero.getRiviNumeroTeksti().contains("1"));
+
     }
-    
+
 }
