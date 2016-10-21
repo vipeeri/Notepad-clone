@@ -15,11 +15,11 @@ import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 /**
- * Tällä luokalla voidaan vaihtaa JTextArea lihavoiduksi
+ * Tällä luokalla voidaan vaihtaa teksti lihavoiduksi
  *
- * @param lihavoiTeksti hoitaa tämän
- * @param lisaaTyyli pitäisi lisätä lihavointi-tyyli, jotta se voidaa ottaa
- * käyttöön
+ * @param lihavoiTeksti lihavoi tekstin edellisen tyylin perusteella
+ *
+ *
  */
 public class Boldaus {
 
@@ -38,14 +38,11 @@ public class Boldaus {
         StyledDocument tyyli = (StyledDocument) t.getDocument();
         Element element = tyyli.getCharacterElement(alku);
         AttributeSet aS = element.getAttributes();
-        //lihavointi tehdään edellisen tyylin perusteella
-        //eli jos teksti on jo lihavoitu, kumotaan lihavointi
+
         MutableAttributeSet uusiAs = new SimpleAttributeSet(aS.copyAttributes());
         StyleConstants.setBold(uusiAs, !StyleConstants.isBold(aS));
         tyyli.setCharacterAttributes(alku, t.getSelectedText().length(), uusiAs, true);
 
-        
     }
-
 
 }

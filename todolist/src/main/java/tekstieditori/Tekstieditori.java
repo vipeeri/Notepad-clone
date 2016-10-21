@@ -70,7 +70,12 @@ public class Tekstieditori {
 
     public void tallennaTiedosto(String teksti) throws IOException {
         //Käytetään Tallenus-luokan tallenna-metodia tekstin tallentamiseen
-        tekstinTallennus.tallenna(teksti, this.nimi);
+       if (avaa.getAvattu() != null){
+           System.out.println(avaa.getAvattu());
+           tekstinTallennus.tallenna(teksti, avaa.getAvattu());
+        }else{
+            tallennaNimellaTiedosto(teksti);
+        }
     }
 
     public void tallennaNimellaTiedosto(String teksti) throws IOException {
@@ -80,22 +85,28 @@ public class Tekstieditori {
 
     public void avaa(JTextPane t) {
         avaa.avaaTiedosto(t);
+        
     }
+    
+    
 
-    public void vaihdaTeema(JMenuBar j, String vari) {
-        j.setBackground(Color.green);
-
+    public void tummaTeema(JTextPane j) {
+        teema.tummaTeema(j);
+    }
+    
+    public void punainenTeema(JTextPane j) {
+        teema.punainenTeema(j);
     }
 
     public void lihavoiTeksti(JTextPane t) {
         lihavoi.lihavoiTeksti(t);
     }
 
-    public void vaihdaFontti(JTextArea tekstiAlue, String fonttiNimi) {
+    public void vaihdaFontti(JTextPane tekstiPane, String fonttiNimi) {
         if (fonttiNimi.equals("serif")) {
-            fontti.vaihdaFonttiSerif(tekstiAlue);
+            fontti.vaihdaFonttiSerif(tekstiPane);
         } else if (fonttiNimi.equals("arial")) {
-            fontti.vaihdaFonttiArial(tekstiAlue);
+            fontti.vaihdaFonttiArial(tekstiPane);
         }
     }
 

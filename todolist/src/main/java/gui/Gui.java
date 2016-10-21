@@ -23,6 +23,8 @@ import javax.swing.JTextPane;
 import javax.swing.JToolBar;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultEditorKit;
 import javax.swing.text.DefaultStyledDocument;
@@ -31,9 +33,9 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 import tekstieditori.Tekstieditori;
+import toiminnot.Rivinumerot;
 import toiminnot.Tallennus;
 import toiminnot.Teemat;
-import toiminnot.Tekstinvalinta;
 
 public class Gui extends JFrame implements ActionListener {
 
@@ -43,14 +45,14 @@ public class Gui extends JFrame implements ActionListener {
     private int laskuri;
     private JMenuBar menuPalkki;
     private JMenu tiedostoMenu, muokkaaMenu, muotoileMenu, teema;
-    private JMenuItem tallennaOsa, tallennaNimella, avaaOsa, boldaus, fontti, serifFontti, arialFontti, vihreaTeema, kopioi,
+    private JMenuItem tallennaOsa, tallennaNimella, avaaOsa, boldaus, fontti, serifFontti, arialFontti, tummaTeema, punainenTeema, kopioi,
             liita, leikkaa;
     private JScrollPane scpane;
     private String alkuTxt;
     private JToolBar toolBar;
     private Tekstieditori tEditori = new Tekstieditori();
     private Teemat teemat = new Teemat();
-    private Tekstinvalinta tekstinValinta;
+    private Rivinumerot rivinumerotTextPane;
 
     public Gui() throws BadLocationException {
 
@@ -76,39 +78,38 @@ public class Gui extends JFrame implements ActionListener {
          */
         laskuri = 0;
         alkuTxt = " ";
+
         //menu-palkki
         menuPalkki = new JMenuBar();
-        //JMenut
-        tiedostoMenu = new JMenu("Tiedosto"); //tiedosto menu-palkkiin
+
+        //Tiedosto, Muokkaa ja Muotoile-JMenut
+        tiedostoMenu = new JMenu("Tiedosto");
         muokkaaMenu = new JMenu("Muokkaa");
         muotoileMenu = new JMenu("Muotoile");
         teema = new JMenu("Teema");
-        //Teemat JMenuun
 
-        vihreaTeema = new JMenuItem("Vihrea");
+        //Teemat JMenuun
+        punainenTeema = new JMenuItem("Punainen");
+        tummaTeema = new JMenuItem("Tumma");
+
         //Tiedosto-menuun kuuluvat JMenuItemit
         avaaOsa = new JMenuItem("Avaa...");
         tallennaOsa = new JMenuItem("Tallenna");
         tallennaNimella = new JMenuItem("Tallenna nimellä...");
+
         //Lihavointi ja fontit muotoile submenuun
-        boldaus = new JMenuItem("Lihavoi"); //muotoile
-        fontti = new JMenu("Fontti"); //muotoile
+        boldaus = new JMenuItem("Lihavoi");
+        fontti = new JMenu("Fontti");
+
         //Submenut Fontille:
         serifFontti = new JMenuItem("Serif");
         arialFontti = new JMenuItem("Arial");
-        //tekstialue
 
-        tekstinValinta = new Tekstinvalinta();
         this.styledDocument = new DefaultStyledDocument();
         tekstiPane = new JTextPane(styledDocument);
-        tekstiPane.addCaretListener(tekstinValinta);
-
-        //scpane = new JScrollPane(tekstiAlue);
         scpane = new JScrollPane(tekstiPane);
         toolBar = new JToolBar();
 
-//        tekstiAlue.setLineWrap(true);
-//        tekstiAlue.setWrapStyleWord(true);
         //Luodaan editorin menu-palkki
         setJMenuBar(menuPalkki);
 
@@ -121,17 +122,21 @@ public class Gui extends JFrame implements ActionListener {
         tiedostoMenu.add(avaaOsa);
         tiedostoMenu.add(tallennaOsa);
         tiedostoMenu.add(tallennaNimella);
+
         //Muotoile-valikkoon lihavointi, fontti ja teema
         muotoileMenu.add(boldaus);
         muotoileMenu.add(fontti);
         muotoileMenu.add(teema);
-        //Fontti TÄMÄ VIELÄ VAIHEESSA*****
-        teema.add(vihreaTeema);
 
+        //Teema-valikkoon punainen ja tumma teema
+        teema.add(punainenTeema);
+        teema.add(tummaTeema);
+
+        //Fontti-valikkoon Seriff ja Arial-fontit
         fontti.add(serifFontti);
         fontti.add(arialFontti);
 
-        //Muokkaa valikkoon tulossa leikkaa/liitä/kopioi
+        //Muokkaa-valikkoon leikkaa/liitä/kopioi
         kopioi = new JMenuItem(new DefaultEditorKit.CopyAction());
         kopioi.setText("Kopioi");
         kopioi.setMnemonic(KeyEvent.VK_C);
@@ -148,7 +153,6 @@ public class Gui extends JFrame implements ActionListener {
         pane.add(scpane, BorderLayout.CENTER);
         pane.add(toolBar, BorderLayout.SOUTH);
 
-        //näppäinkomennot tähän, leikkaa liitä kopio
         //kuuntelijat 1. tallenna 2. avaa jnejne
         avaaOsa.addActionListener(this);
         tallennaOsa.addActionListener(this);
@@ -156,10 +160,31 @@ public class Gui extends JFrame implements ActionListener {
         boldaus.addActionListener(this);
         serifFontti.addActionListener(this);
         arialFontti.addActionListener(this);
-        
-        
+        tummaTeema.addActionListener(this);
+        punainenTeema.addActionListener(this);
+
+        rivinumerotTextPane = new Rivinumerot(tekstiPane);
+        scpane.setRowHeaderView(rivinumerotTextPane);
+
+        tekstiPane.getDocument().addDocumentListener(new DocumentListener() {
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                rivinumerotTextPane.paivitaRiviNumerot();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                rivinumerotTextPane.paivitaRiviNumerot();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                rivinumerotTextPane.paivitaRiviNumerot();
+            }
+        });
+
     }
-    
 
     public String getTekstiAlue() {
         return tekstiAlue.getText();
@@ -169,7 +194,7 @@ public class Gui extends JFrame implements ActionListener {
         JMenuItem choice = (JMenuItem) e.getSource();
         if (choice == tallennaOsa) {
             try {
-                tEditori.tallennaTiedosto(tekstiAlue.getText());
+                tEditori.tallennaTiedosto(tekstiPane.getText());
             } catch (IOException ex) {
                 Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -188,13 +213,22 @@ public class Gui extends JFrame implements ActionListener {
             tEditori.lihavoiTeksti(tekstiPane);
         }
         if (choice == arialFontti) {
-            tEditori.vaihdaFontti(tekstiAlue, "arial");
+            tEditori.vaihdaFontti(tekstiPane, "arial");
         }
         if (choice == serifFontti) {
-            tEditori.vaihdaFontti(tekstiAlue, "serif");
+            tEditori.vaihdaFontti(tekstiPane, "serif");
         }
-        if (choice == vihreaTeema) {
-            tEditori.vaihdaTeema(menuPalkki, "vihrea");
+        if (choice == punainenTeema) {
+            tEditori.punainenTeema(tekstiPane);
+
+        }
+        if (choice == tummaTeema) {
+            tEditori.tummaTeema(tekstiPane);
         }
     }
+
+    public void changeHeader(String teksti) {
+        setTitle("Tekstieditori - " + teksti);
+    }
+
 }

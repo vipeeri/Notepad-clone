@@ -1,5 +1,6 @@
 package toiminnot;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
@@ -10,17 +11,25 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyledDocument;
+import tekstieditori.Tekstieditori;
 
 public class Avaa extends JFrame {
 
+    private String avattu;
+
     /**
      * Tällä luokalla voidaan avata valitsema tekstitiedosto
-     * 
      *
-     *@param avaaTiedosto rakentaa JTextPaneen Stringin tiedostossa olevasta tekstistä
+     *
+     * @param avaaTiedosto rakentaa JTextPaneen Stringin tiedostossa olevasta
+     * tekstistä
      */
     public Avaa() {
+        avattu = null;
+    }
 
+    public String getAvattu() {
+        return avattu;
     }
 
     public void avaaTiedosto(JTextPane alue) {
@@ -35,10 +44,12 @@ public class Avaa extends JFrame {
 
         try {
             Scanner lukija = new Scanner(new FileReader(avaa.getSelectedFile().getPath()));
+            String teksti = "";
             while (lukija.hasNext()) {
-                // alue.append(lukija.nextLine() + "\n");
-                tekstiP.insertString(0, lukija.nextLine() + "\n", a);
+                teksti = teksti + lukija.nextLine() + "\n";
             }
+            tekstiP.insertString(0, teksti, a);
+            avattu = avaa.getSelectedFile().getPath();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

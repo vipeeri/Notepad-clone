@@ -13,15 +13,16 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- * Tällä luokalla voidaan tallentaa tuotettu teksti haluamaan sijaintiin
+ * Tällä luokalla voidaan tallentaa tuotettu teksti käyttäjän haluamaan
+ * sijaintiin
  *
- *@param tallennaNimella tallentaa tiedoston käyttäjän haluamaan hakemistoon
+ * @param tallennaNimella tallentaa tiedoston käyttäjän haluamaan hakemistoon
  * @param tallenna tallentaa tiedoston siihen mistä se on avattu
- * @param tallennaVanha kysyy käyttäjältä tallennetaanko tiedostoa jos käyttäjä sulkee ohjelman tallentamatta
+ * @param tallennaVanha kysyy käyttäjältä tallennetaanko tiedostoa jos käyttäjä
+ * sulkee ohjelman tallentamatta
  */
 public class Tallennus extends JFrame {
 
-    //Tallenna nimellä
     public void tallennaNimella(String teksti) throws IOException {
         JFileChooser save = new JFileChooser();
         int option = save.showSaveDialog(this);
@@ -40,12 +41,11 @@ public class Tallennus extends JFrame {
         }
     }
 
-    // Tallenna
     public void tallenna(String teksti, String tiedosto) throws IOException {
 
         FileWriter kirjoita = null;
         try {
-            kirjoita = new FileWriter("koira.txt", false);
+            kirjoita = new FileWriter(tiedosto, false);
             kirjoita.write(teksti);
 
         } catch (IOException ex) {

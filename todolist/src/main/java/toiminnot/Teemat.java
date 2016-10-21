@@ -1,36 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package toiminnot;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JMenuBar;
+import javax.swing.JTextPane;
 import javax.swing.JToolBar;
 
 /**
- * Jatkossa luokalla pitäisi pystyä vaihtamaan esim. värejä
+ * Teemat luokalla voidaan vaihtaa JTextPanen ja siinä olevan tekstin väriä
  *
- *@param paintComponent hoitaa tämän
+ * @param punainenTeema vaihtaa backgroundin punaiseksi ja tekstin valkoiseksi
+ * @param tummaTeema vaihtaa backgroundin mustaksi ja tekstin valkoiseksi
+ *
  */
-public class Teemat extends JToolBar {
+public class Teemat {
 
-    Color bgColor = Color.WHITE;
+    public void teemat() {
 
-    public void setColor(Color color) {
-        bgColor = color;
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.GREEN);
-        g2d.fillRect(0, 0, getWidth() - 1, getHeight() - 1);
+    public void punainenTeema(JTextPane tekstiPane) {
+        tekstiPane.setBackground(Color.red);
+        tekstiPane.setForeground(Color.white);
+    }
 
+    public void tummaTeema(JTextPane tekstiPane) {
+        tekstiPane.setBackground(Color.black);
+        tekstiPane.setForeground(Color.white);
     }
 
 }
