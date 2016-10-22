@@ -1,9 +1,14 @@
-**Aihe:** Tekstieditori. Toteutetaan yksinkertainen tekstieditori eli notepad-kopio. 
+**Aihe** 
 
-**Käyttäjät:** Ei rajoituksia.
+Tekstieditori, eli yksinkertainen notepad-klooni. 
 
-**Käyttäjien toiminnot:**
-- Tekstin syöttäminen, sen muokkaaminen (alleviivaus, fontin ja teeman vaihto, lihavointi) tallennus ja tekstitiedostojen avaaminen.
+**Käyttäjät** 
+
+Ei rajoituksia.
+
+**Käyttäjien toiminnot**
+
+Tekstin syöttäminen, sen muokkaaminen (alleviivaus, fontin ja teeman vaihto, lihavointi) tallennus ja tekstitiedostojen avaaminen.
 
 **Rakennekuvaus**
 

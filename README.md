@@ -7,7 +7,7 @@
 ### Dokumentaatio
 ------
 
-* [Aiheen kuvaus](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/aiheenKuvausJaRakenne.md)
+* [Aiheen kuvaus ja rakenne](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/aiheenKuvausJaRakenne.md)
 * [Tuntikirjanpito](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/tuntikirjanpito.md)
  
 * [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/checkstyle.html)
