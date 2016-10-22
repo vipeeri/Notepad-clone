@@ -89,9 +89,15 @@
     </module>
 
     <!-- File Length -->
-
+    
+    <module name="SuppressionFilter">
+        <property name="file" value="${config_loc}/mysuppressions.xml" />
+    </module>
+    
     <module name='FileLength'>
         <property name='max' value='200' />
     </module>
+    
+    
 
 </module>
