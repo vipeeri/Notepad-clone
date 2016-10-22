@@ -1,9 +1,9 @@
-**Aihe:**Tekstieditori. Toteutetaan yksinkertainen tekstieditori eli notepad-kopio. 
+**Aihe: **Tekstieditori. Toteutetaan yksinkertainen tekstieditori eli notepad-kopio. 
 
 **Käyttäjät:** Ei rajoituksia.
 
 **Käyttäjien toiminnot:**
-- Tekstin syöttö, muokkaus ja tallennus
+- Tekstin syöttäminen, sen muokkaaminen (alleviivaus, fontin ja teeman vaihto, lihavointi) tallennus ja tekstitiedostojen avaaminen.
 
 **Rakennekuvaus:**
 Tekstieditori koostuu kymmenestä eri luokasta, joista logiikkaan kuuluvat toiminnot-paketissa olevat luokat. Tekstieditori-pakettiin kuuluu Main- ja Tekstieditori-luokka, joista viimeisin jakaa käyttäjän valitsemia toiminnallisuuksia toiminnot-paketissa oleviin luokkiin.
