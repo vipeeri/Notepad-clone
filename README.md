@@ -1,7 +1,7 @@
 # Tekstieditori
-======
+----
 
-### Tekstieditorilla, eli notepad-kopiolla voidaan muokata yksinkertaista tekstiä.
+### Tekstieditorilla, eli yksinkertaisella notepad-kopiolla voidaan muokata tekstiä.
 ------
 
 ### Dokumentaatio
