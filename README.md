@@ -12,4 +12,4 @@
  
 * [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/checkstyle.html)
 * [Pit-raportti](https://htmlpreview.github.io/?https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/pit/index.html)
-
+* [Testausdokumentaatio] (https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/testausDokumentaatio.md)
