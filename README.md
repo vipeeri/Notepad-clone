@@ -1,7 +1,7 @@
 # Tekstieditori
 ======
 
-* Tekstieditorilla, eli notepad-kopiolla voidaan muokkaa yksinkertaista tekstiä.
+## Tekstieditorilla, eli notepad-kopiolla voidaan muokata yksinkertaista tekstiä.
 
 * [Aiheen kuvaus](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/aiheenKuvausJaRakenne.md)
 * [Tuntikirjanpito](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/tuntikirjanpito.md)
