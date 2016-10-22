@@ -1,4 +1,4 @@
-**Aihe: **Tekstieditori. Toteutetaan yksinkertainen tekstieditori eli notepad-kopio. 
+**Aihe:** Tekstieditori. Toteutetaan yksinkertainen tekstieditori eli notepad-kopio. 
 
 **Käyttäjät:** Ei rajoituksia.
 
