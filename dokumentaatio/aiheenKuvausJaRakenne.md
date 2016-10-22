@@ -5,7 +5,8 @@
 **Käyttäjien toiminnot:**
 - Tekstin syöttäminen, sen muokkaaminen (alleviivaus, fontin ja teeman vaihto, lihavointi) tallennus ja tekstitiedostojen avaaminen.
 
-**Rakennekuvaus:**
+**Rakennekuvaus**
+
 Tekstieditori koostuu kymmenestä eri luokasta, joista logiikkaan kuuluvat toiminnot-paketissa olevat luokat. Tekstieditori-pakettiin kuuluu Main- ja Tekstieditori-luokka, joista viimeisin jakaa käyttäjän valitsemia toiminnallisuuksia toiminnot-paketissa oleviin luokkiin.
 
 Käyttäjä voi antaa komentoja GUI-luokasta, johon Tekstieditori-luokka sitoo kaikki käytettävissä olevat toiminnot.
