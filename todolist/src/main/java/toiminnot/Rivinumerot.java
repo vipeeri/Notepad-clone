@@ -5,28 +5,44 @@ import javax.swing.text.Element;
 import java.awt.*;
 
 /**
- * Tämä luokka lisää editoriin rivinumerot
+ * Tämä luokka lisää editoriin rivinumerot.
  *
- * @param paivitaRiviNumerot päivittää numerot tekstikenttään
- * @param getRiviNumeroTeksti appendaa rivinumeron riippuen millä rivillä ollaan
  *
  */
-
 public class Rivinumerot extends JTextPane {
 
     private JTextPane tekstiPane;
 
+    /**
+     * Metodi lisää oman JTextPanen rivinumeroille ohjelmiston vasempaan reunaan
+     *
+     * @param textPane saadaan GUI:sta
+     *
+     *
+     */
     public Rivinumerot(JTextPane textPane) {
         this.tekstiPane = textPane;
         setBackground(Color.LIGHT_GRAY);
         setEditable(false);
     }
 
+    /**
+     * Metodi päivittää rivinumerot.
+     *
+     *
+     */
     public void paivitaRiviNumerot() {
         String riviNumeroTeksti = getRiviNumeroTeksti();
         setText(riviNumeroTeksti);
     }
 
+    /**
+     * Metodi tarkistaa mikä on oikea rivinumero, joka sitten palautetaan
+     * stringinä.
+     *
+     * @return palauttaa rivinumeron JTextPaneen
+     *
+     */
     public String getRiviNumeroTeksti() {
 
         int caretPosition = tekstiPane.getDocument().getLength();

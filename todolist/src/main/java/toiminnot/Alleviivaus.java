@@ -1,4 +1,3 @@
-
 package toiminnot;
 
 import javax.swing.JTextPane;
@@ -10,18 +9,23 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 public class Alleviivaus {
+
     /**
-     * Tällä luokalla voidaan avata valitsema tekstitiedosto
+     * Tällä luokalla voidaan avata valitsema tekstitiedosto.
      *
      *
-     * @param alleviivaaTeksti alleviivaa JTextPanen tekstin
-     * 
+     *
+     *
      */
-    
     public Alleviivaus() {
 
     }
 
+    /**
+     * Metodi alleviivaa käyttäjän valitseman tekstin.
+     *
+     * @param t JTextPane, joka saadaan GUI:sta, josta teksti valitaan
+     */
     public void alleviivaaTeksti(JTextPane t) {
 
         int alku = t.getSelectionStart();
@@ -40,5 +44,4 @@ public class Alleviivaus {
 
     }
 
-    
 }

@@ -13,17 +13,16 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyledDocument;
 import tekstieditori.Tekstieditori;
 
+/**
+ * Tällä luokalla voidaan avata valitsema tekstitiedosto.
+ *
+ *
+ */
 public class Avaa extends JFrame {
 
+    /* ... */
     private String avattu;
 
-    /**
-     * Tällä luokalla voidaan avata valitsema tekstitiedosto
-     *
-     *
-     * @param avaaTiedosto rakentaa JTextPaneen Stringin tiedostossa olevasta
-     * tekstistä
-     */
     public Avaa() {
         avattu = null;
     }
@@ -32,6 +31,13 @@ public class Avaa extends JFrame {
         return avattu;
     }
 
+    /**
+     * Metodi avaa tiedoston JTextPaneen.
+     *
+     * @param alue GUI:sta tuleva JTextPane
+     *
+     *
+     */
     public void avaaTiedosto(JTextPane alue) {
 
         StyledDocument tekstiP = alue.getStyledDocument();

@@ -11,10 +11,9 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 /**
- * Tällä luokalla voidaan vaihtaa tekstin fonttia
+ * Tällä luokalla voidaan vaihtaa tekstin fonttia.
  *
- * @param vaihdaFonttiArial vaihtaa fontin Arialiksi
- * @param vaihdaFonttiSerif vaihtaa fontin Serifiksi
+ *
  *
  */
 public class Fontti {
@@ -23,6 +22,13 @@ public class Fontti {
 
     }
 
+    /**
+     * Metodilla käyttäjä voi vaihtaa fontin Arialiksi.
+     *
+     * @param t JTextPane saadaan GUI:sta, ja jossa fontin vaihto näkyy
+     *
+     *
+     */
     public void vaihdaFonttiArial(JTextPane t) {
         int alku = t.getSelectionStart();
         int loppu = t.getSelectionEnd();
@@ -40,6 +46,14 @@ public class Fontti {
         tyyli.setCharacterAttributes(alku, t.getSelectedText().length(), uusiAs, true);
 
     }
+
+    /**
+     * Metodilla käyttäjä voi vaihtaa fontin Serifiksi.
+     *
+     * @param t JTextPane saadaan GUI:sta, ja jossa fontin vaihto näkyy
+     *
+     *
+     */
 
     public void vaihdaFonttiSerif(JTextPane t) {
         int alku = t.getSelectionStart();

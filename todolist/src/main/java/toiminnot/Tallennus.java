@@ -16,23 +16,24 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 
 /**
- * Tällä luokalla voidaan tallentaa tuotettu teksti käyttäjän haluamaan
- * sijaintiin
+ * Tällä luokalla voidaan tallentaa tuotettu teksti.
  *
- * @param tallennaNimella tallentaa tiedoston käyttäjän haluamaan hakemistoon
- * @param tallenna tallentaa tiedoston siihen mistä se on avattu
- * @param tarkistajaTallennaVanha hoitaa mahdolliset virhetilanteet ennenkuin kutsuu tallennaVanha-metodia
- * @param tallennaVanha kysyy käyttäjältä tallennetaanko tiedostoa jos käyttäjä
- * sulkee ohjelman tallentamatta
+ *
  */
 public class Tallennus extends JFrame {
 
     private Boolean tallennettu;
-    
+
     public Tallennus() {
         tallennettu = false;
     }
 
+    /**
+     * Metodilla voidaan tallentaa teksti käyttäjän haluamaan hakemistoon.
+     *
+     * @param teksti saadaan GUI:n JTextPanessa olevasta Stringistä
+     * @throws IOException virhetilanteen käsittely
+     */
     public void tallennaNimella(String teksti) throws IOException {
         JFileChooser save = new JFileChooser();
         int option = save.showSaveDialog(this);
@@ -57,11 +58,20 @@ public class Tallennus extends JFrame {
         }
     }
 
-    public void tallenna(String teksti, String tiedosto) throws IOException {
+    /**
+     * Metodilla voidaan tallentaa teksti suoraan tiedostoon, mistä se on
+     * avattu.
+     *
+     * @param teksti saadaan GUI:n JTextPanessa olevasta Stringistä
+     * @param tiedostoNimi saadaan Avaa-luokasta
+     * @throws IOException virhetilanteen käsittely
+     *
+     */
+    public void tallenna(String teksti, String tiedostoNimi) throws IOException {
 
         FileWriter kirjoita = null;
         try {
-            kirjoita = new FileWriter(tiedosto, false);
+            kirjoita = new FileWriter(tiedostoNimi, false);
             kirjoita.write(teksti);
             tallennettu = true;
         } catch (IOException ex) {
@@ -73,16 +83,25 @@ public class Tallennus extends JFrame {
         }
     }
 
-    public void tallennaVanha(String t, String tiedosto) throws IOException {
+    /**
+     * Metodi kysyy ohjelmaa suljettaessa, haluaako käyttäjä tallentaa tehdyt
+     * muutokset.
+     *
+     * @param teksti saadaan GUI:n JTextPanessa olevasta Stringistä
+     * @param tiedostoNimi saadaan Avaa-luokasta
+     * @throws IOException virhetilanteen käsittely
+     *
+     */
+    public void tallennaVanha(String teksti, String tiedostoNimi) throws IOException {
 
         if (JOptionPane.showConfirmDialog(this, "Haluatko tallentaa " + " ?", "Tallenna", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            if (tiedosto == null) {
-                tallennaNimella(t);
+            if (tiedostoNimi == null) {
+                tallennaNimella(teksti);
                 if (tallennettu == true) {
                     System.exit(0);
                 }
             } else {
-                tallenna(t, tiedosto);
+                tallenna(teksti, tiedostoNimi);
                 if (tallennettu == true) {
                     System.exit(0);
                 }
@@ -93,16 +112,27 @@ public class Tallennus extends JFrame {
 
     }
 
-    public void tarkistajaTallennaVanha(JTextPane p, String path) throws IOException {
-        if (p.getText().equals("") && path == null) {
+    /**
+     * Metodi käsittelee erilaisia tilanteita, joita ilmaantuu ohjelmaa
+     * sulkiessa, ja valitsee sen mukaan tarvittavat toimenpiteet tekstin
+     * tallennusta varten.
+     *
+     * @param p saadaan GUI:sta, ja metodissa tarkistellaan siinä olevaa tekstiä
+     * @param tiedostoNimi saadaan Avaa-luokasta, ja metodissa tarkastellaan
+     * onko se esim. tyhjä
+     * @throws IOException virhetilanteen käsittely
+     *
+     */
+    public void tarkistajaTallennaVanha(JTextPane p, String tiedostoNimi) throws IOException {
+        if (p.getText().equals("") && tiedostoNimi == null) {
             System.exit(0);
         }
-        if (path == null) {
-            tallennaVanha(p.getText(), path);
+        if (tiedostoNimi == null) {
+            tallennaVanha(p.getText(), tiedostoNimi);
         }
         String teksti = "";
         try {
-            Scanner lukija = new Scanner(new FileReader(path));
+            Scanner lukija = new Scanner(new FileReader(tiedostoNimi));
             while (lukija.hasNext()) {
                 teksti += lukija.nextLine();
             }
@@ -112,7 +142,7 @@ public class Tallennus extends JFrame {
         }
 
         if (!p.getText().equals(teksti)) {
-            tallennaVanha(p.getText(), path);
+            tallennaVanha(p.getText(), tiedostoNimi);
         } else {
             return;
         }

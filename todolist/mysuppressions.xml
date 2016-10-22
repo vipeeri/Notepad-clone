@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <?xml version="1.0"?>
 
 <!DOCTYPE suppressions PUBLIC
@@ -7,4 +6,5 @@
 
 <suppressions>
     <suppress files="Gui.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="Main.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

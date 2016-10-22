@@ -30,15 +30,12 @@ import toiminnot.Tallennus;
 import toiminnot.Teemat;
 
 /**
- * Tekstieditori-luokasta annetaan käskyt toiminnot-paketissa oleviin luokkiin
+ * Tekstieditori-luokasta annetaan käskyt toiminnot-paketissa oleviin luokkiin.
  *
  *
  */
 public class Tekstieditori {
 
-    private String sijainti;
-    private String nimi;
-    private String teksti;
     private Tallennus tekstinTallennus = new Tallennus();
     private Boldaus lihavoi = new Boldaus();
     private Fontti fontti = new Fontti();
@@ -47,33 +44,13 @@ public class Tekstieditori {
     private Alleviivaus alleViivaa = new Alleviivaus();
 
     public Tekstieditori() {
-        this.sijainti = "";
-        this.nimi = "";
-        this.teksti = "";
 
-    }
-
-    public void setSijainti(String sijainti) {
-        this.sijainti = sijainti;
-
-    }
-
-    public void setNimi(String nimi) {
-        this.nimi = nimi;
-    }
-
-    public String getSijainti() {
-        return this.sijainti;
-    }
-
-    public String getNimi() {
-        return this.nimi;
     }
 
     public void tallennaTiedosto(String teksti) throws IOException {
 
         if (avaa.getAvattu() != null) {
-            
+
             System.out.println(avaa.getAvattu());
             tekstinTallennus.tallenna(teksti, avaa.getAvattu());
         } else {

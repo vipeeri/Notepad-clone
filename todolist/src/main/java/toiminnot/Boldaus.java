@@ -15,10 +15,7 @@ import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 /**
- * Tällä luokalla voidaan vaihtaa teksti lihavoiduksi
- *
- * @param lihavoiTeksti lihavoi tekstin edellisen tyylin perusteella
- *
+ * Tällä luokalla voidaan vaihtaa teksti lihavoiduksi.
  *
  */
 public class Boldaus {
@@ -27,6 +24,13 @@ public class Boldaus {
 
     }
 
+    /**
+     * Metodi lihavoi käyttäjän valitseman tekstin.
+     *
+     * @param t saadaan GUI:sta, josta teksti valitaan
+     *
+     *
+     */
     public void lihavoiTeksti(JTextPane t) {
 
         int alku = t.getSelectionStart();

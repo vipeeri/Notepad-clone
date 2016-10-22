@@ -91,7 +91,7 @@
     <!-- File Length -->
     
     <module name="SuppressionFilter">
-        <property name="file" value="${config_loc}/mysuppressions.xml" />
+        <property name="file" value="mysuppressions.xml" />
     </module>
     
     <module name='FileLength'>
