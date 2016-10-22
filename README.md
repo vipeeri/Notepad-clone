@@ -1,5 +1,5 @@
 # Tekstieditori
-----
+-----
 
 ### Tekstieditorilla, eli yksinkertaisella notepad-kopiolla voidaan muokata tekstiä.
 ------
