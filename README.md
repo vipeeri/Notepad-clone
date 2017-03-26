@@ -1,15 +1,15 @@
-# Tekstieditori
+# Notepad-clone
 -----
 
-### Tekstieditorilla, eli yksinkertaisella notepad-kopiolla voidaan muokata tekstiä.
+### This is my first Java-project, a simple text editor with simple functions and features.
 ------
 
-### Dokumentaatio
+### Documentation
 ------
 
-* [Aiheen kuvaus ja rakenne](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/aiheenKuvausJaRakenne.md)
-* [Tuntikirjanpito](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/tuntikirjanpito.md)
+* [Description and structure](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/aiheenKuvausJaRakenne.md)
+* [Development time tracking](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/tuntikirjanpito.md)
  
-* [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/checkstyle.html)
-* [Pit-raportti](https://htmlpreview.github.io/?https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/pit/index.html)
-* [Testausdokumentaatio] (https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/testausDokumentaatio.md)
+* [Checkstyle](https://htmlpreview.github.io/?https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/checkstyle.html)
+* [Pit](https://htmlpreview.github.io/?https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/pit/index.html)
+* [Debug documentation](https://github.com/vipeeri/Tekstieditori/blob/master/dokumentaatio/testausDokumentaatio.md)
